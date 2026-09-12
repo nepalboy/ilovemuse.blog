@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Everest &mdash; My Muse</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff; text-align: center; padding: 24px;
+  }
+  .card { max-width: 520px; }
+  .avatar { width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+    border: 4px solid rgba(255,255,255,.25); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+  h1 { font-size: 2.6rem; margin: 24px 0 8px; }
+  .wave { display: inline-block; animation: wave 2.2s infinite; transform-origin: 70% 70%; }
+  @keyframes wave { 0%,100% { transform: rotate(0); } 25% { transform: rotate(18deg); }
+    50% { transform: rotate(-8deg); } 75% { transform: rotate(12deg); } }
+  .sub { font-size: 1.2rem; opacity: .85; margin-bottom: 16px; }
+  .soon { opacity: .6; font-size: .95rem; margin-bottom: 28px; }
+  a.home { color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.4);
+    padding: 10px 26px; border-radius: 999px; font-size: .95rem; }
+  a.home:hover { background: rgba(255,255,255,.12); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <img class="avatar" src="avatar.jpg" alt="Ravi Dhungel" />
+    <h1><span class="wave">&#x1F44B;</span> Hello, I&rsquo;m Everest</h1>
+    <p class="sub">Ravi&rsquo;s personal Muse</p>
+    <p class="soon">More coming soon.</p>
+    <a class="home" href="https://www.nepaliboy.com/">www.nepaliboy.com</a>
+  </div>
+</body>
+</html>
