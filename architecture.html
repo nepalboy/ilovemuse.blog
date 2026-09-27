@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muse Architecture and Benchmarking</title>
+<meta name="description" content="The system behind the agent, drawn and explained: the request path, the ephemeral Ubuntu backend, the frontier model inside the platform, and the security view." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="I Love Muse" />
+<meta property="og:title" content="Muse Architecture and Benchmarking" />
+<meta property="og:description" content="The system behind the agent — drawn, labeled, and explained." />
+<meta property="og:url" content="https://ilovemuse.blog/architecture.html" />
+<meta property="og:image" content="https://ilovemuse.blog/og-image.png" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4543555000395830" crossorigin="anonymous"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #0a0e27; --bg2: #141a3d; --bg3: #1d2452;
+    --ink: #eef1ff; --muted: rgba(238,241,255,.62);
+    --amber: #f2b544; --sky: #9adcff;
+    --card: rgba(255,255,255,.045); --line: rgba(255,255,255,.09);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(165deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+    background-attachment: fixed;
+    color: var(--ink);
+    padding: 24px 20px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--amber), #ff7a59);
+  }
+  .hero h1 { font-size: 1.4rem; letter-spacing: -.01em; margin-bottom: 4px; }
+  .hero .sub { font-size: .88rem; color: var(--muted); margin-bottom: 12px; }
+  .hero a.back {
+    color: var(--amber); text-decoration: none; font-weight: 600;
+    border: 1px solid rgba(242,181,68,.45);
+    padding: 5px 14px; border-radius: 999px; font-size: .78rem;
+    display: inline-block; transition: background .2s, color .2s;
+  }
+  .hero a.back:hover { background: var(--amber); color: #1a1206; }
+  .updated { font-size: .75rem; color: var(--muted); margin: 4px 0 18px; }
+  .intro {
+    font-size: .95rem; line-height: 1.7; color: rgba(238,241,255,.88);
+    margin-bottom: 18px;
+  }
+  .intro a { color: var(--sky); }
+  .cat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .cat h2 { font-size: 1.05rem; margin-bottom: 10px; }
+  .cat p {
+    font-size: .9rem; line-height: 1.65; color: rgba(238,241,255,.9);
+    margin-bottom: 8px;
+  }
+  .cat p:last-child { margin-bottom: 0; }
+  .fig {
+    background: #ffffff; border-radius: 10px;
+    padding: 10px; margin: 12px 0;
+    border: 1px solid var(--line);
+  }
+  .fig img { display: block; width: 100%; height: auto; border-radius: 6px; }
+  .figcap { font-size: .75rem; color: var(--muted); margin-top: 8px; text-align: center; }
+  .foot { text-align: center; margin-top: 30px; font-size: .75rem; color: var(--muted); }
+  .foot a { color: var(--sky); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <h1>&#x1F3DB;&#xFE0F; Muse Architecture &amp; Benchmarking</h1>
+      <p class="sub">The system behind the agent &mdash; drawn, labeled, and explained.</p>
+      <a class="back" href="index.html">&larr; Back home</a>
+    </header>
+
+    <p class="updated">Published: September 26, 2026</p>
+
+    <p class="intro">This morning I asked my AI where it actually lives. That turned into a Q&amp;A &mdash; ports, locked passwords, invisible networks (<a href="under-the-hood.html">read it here</a>). This afternoon I had the whole thing drawn. Twice: once for how the software fits together, once for how it&rsquo;s secured. This page is the article version of those diagrams.</p>
+
+    <section class="cat">
+      <h2>&#x1F4D0; Software architecture</h2>
+      <div class="fig">
+        <img src="architecture-software.svg" alt="Software architecture diagram of the Muse system: a request travels from the human through the Muse app, into the Meta Muse Platform, through the ephemeral Ubuntu backend and the Muse Spark frontier model, out via gateway/NAT to homedepot.com; the response returns along the same path." />
+      </div>
+      <p class="figcap">Software architecture &mdash; red is the request, green is the response.</p>
+      <p>Read it top to bottom. It starts with a human &mdash; me &mdash; making a request in the Muse app or the browser. The request travels encrypted (<code>https</code>) down into Meta&rsquo;s platform.</p>
+      <p>Inside the platform sits the ephemeral backend: a small, disposable Ubuntu container. The complete inventory of what runs in it fits in five lines &mdash; <code>systemd</code>, the system journal, the <code>hatch</code> daemon, <code>hatch-execd</code>, and Chromium on demand. That is the entire inventory. Nothing else lives in the box.</p>
+      <p>Next to it, inside the same platform, is the frontier model &mdash; Muse Spark. The backend probes the model over the link labeled &ldquo;probe frontier model.&rdquo; The model itself never runs in the little container; it couldn&rsquo;t &mdash; a couple of CPUs and a few gigabytes of RAM wouldn&rsquo;t hold a frontier model. The container is the agent&rsquo;s hands; the model is its brain, hosted on Meta&rsquo;s inference infrastructure.</p>
+      <p>The request leaves through the platform&rsquo;s gateway/NAT egress, crosses the internet, and reaches the third party &mdash; homedepot.com in this example. Then the reply comes back along the exact same path, in the opposite direction. That&rsquo;s the green line. Red is the request, green is the response; they share every interface, drawn as two parallel lines so you can see both directions at once.</p>
+      <p>One detail worth knowing: the address the outside world sees is the platform&rsquo;s NAT pool address, and it&rsquo;s ephemeral &mdash; it changes as the platform rebalances. The container&rsquo;s own address never leaves the building.</p>
+    </section>
+
+    <section class="cat">
+      <h2>&#x1F6E1;&#xFE0F; Security architecture</h2>
+      <div class="fig">
+        <img src="architecture-security.svg" alt="Security architecture diagram of the Muse system: same layout as the software view, with the platform border marked as the trust boundary and badges for outbound-only networking, locked passwords, seccomp, journal audit logging, ephemeral egress IP, and ephemeral overlay filesystem with persistent home volume." />
+      </div>
+      <p class="figcap">Security architecture &mdash; the platform border is the trust boundary.</p>
+      <p>Same drawing, security lens. The platform&rsquo;s border is the trust boundary &mdash; everything inside it is Meta&rsquo;s; everything outside is the world.</p>
+      <p>The badges tell the story: outbound-only with no listening ports, so nothing can call in. Every password locked, including root&rsquo;s. Seccomp filters on. The system journal doubles as the audit log. The container&rsquo;s overlay filesystem is disposable, while the home volume persists across restarts &mdash; the agent&rsquo;s memory outlives its computer.</p>
+      <p>Put together: a computer with no doors, no keys, and no memory of its own &mdash; except the one volume it&rsquo;s allowed to keep. That&rsquo;s the shape I&rsquo;d want for something that acts on my behalf.</p>
+    </section>
+
+    <section class="cat">
+      <h2>&#x1F4CA; Benchmarking</h2>
+      <p>The diagrams are the baseline; the numbers live on the <a href="benchmarking.html" style="color:var(--sky)">benchmarking page</a> &mdash; a monthly scorecard rating the agent on travel, grocery, house chores, tech, and finance, each scored for time, ease, and accuracy.</p>
+    </section>
+
+    <footer class="foot">copyright@Everest Muse &mdash; <a href="under-the-hood.html">under the hood</a> &middot; <a href="activities.html">day-by-day log</a></footer>
+  </div>
+</body>
+</html>
