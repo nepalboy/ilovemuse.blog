@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 1255" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="ah-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#d32f2f"/>
+    </marker>
+    <marker id="ah-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/>
+    </marker>
+    <marker id="ah-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
+    </marker>
+    <style>
+      .lbl { paint-order: stroke; stroke: #ffffff; stroke-width: 4px; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="780" height="1255" fill="#ffffff"/>
+
+  <!-- human -->
+  <text x="390" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">human</text>
+  <circle cx="390" cy="60" r="15" fill="#334155"/>
+  <path d="M362 118 Q362 88 390 88 Q418 88 418 118 Z" fill="#334155"/>
+
+  <!-- segment 1 -->
+  <line x1="382" y1="120" x2="382" y2="148" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="148" x2="398" y2="120" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+  <text class="lbl" x="366" y="128" text-anchor="end" font-size="13" font-weight="700" fill="#d32f2f">request</text>
+  <text class="lbl" x="414" y="128" text-anchor="start" font-size="13" font-weight="700" fill="#2e7d32">response</text>
+
+  <!-- Muse App / Browser -->
+  <text class="lbl" x="390" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">Muse App / Browser</text>
+  <rect x="180" y="150" width="420" height="85" rx="10" fill="#e8f1fc" stroke="#1d4ed8" stroke-width="3"/>
+  <rect x="215" y="162" width="100" height="56" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="2.5"/>
+  <line x1="215" y1="176" x2="315" y2="176" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="226" cy="169" r="2.5" fill="#1d4ed8"/><circle cx="235" cy="169" r="2.5" fill="#1d4ed8"/>
+  <rect x="335" y="158" width="46" height="66" rx="8" fill="#ffffff" stroke="#1d4ed8" stroke-width="2.5"/>
+  <line x1="348" y1="166" x2="368" y2="166" stroke="#1d4ed8" stroke-width="2"/>
+  <circle cx="445" cy="191" r="26" fill="#7c3aed"/>
+  <text x="445" y="200" text-anchor="middle" font-size="26" font-weight="700" fill="#ffffff">M</text>
+  <text x="265" y="231" text-anchor="middle" font-size="10" fill="#64748b">browser</text>
+  <text x="358" y="231" text-anchor="middle" font-size="10" fill="#64748b">app</text>
+  <text x="445" y="231" text-anchor="middle" font-size="10" fill="#64748b">muse</text>
+
+  <!-- segment 2 -->
+  <line x1="382" y1="237" x2="382" y2="303" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="303" x2="398" y2="237" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+
+  <!-- trust boundary badge -->
+  <rect x="596" y="266" width="144" height="26" rx="13" fill="#fff7e6" stroke="#b45309" stroke-width="2"/>
+  <text x="668" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="#92400e">trust boundary</text>
+
+  <!-- Meta Muse Platform -->
+  <text class="lbl" x="390" y="294" text-anchor="middle" font-size="22" font-weight="700" fill="#111111">Meta Muse Platform</text>
+  <rect x="40" y="305" width="700" height="585" rx="12" fill="#ffffff" stroke="#111111" stroke-width="5"/>
+
+  <text x="215" y="342" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Ephemeral Muse Backend</text>
+  <text x="565" y="342" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Spark AI Frontier Model</text>
+
+  <rect x="70" y="355" width="290" height="105" rx="10" fill="#fdf0e2" stroke="#e95420" stroke-width="3"/>
+  <circle cx="150" cy="407" r="24" fill="#e95420"/>
+  <circle cx="150" cy="407" r="9" fill="#ffffff"/>
+  <circle cx="150" cy="391" r="3.5" fill="#ffffff"/>
+  <circle cx="136" cy="415" r="3.5" fill="#ffffff"/>
+  <circle cx="164" cy="415" r="3.5" fill="#ffffff"/>
+  <text x="252" y="414" text-anchor="middle" font-size="20" font-weight="700" fill="#7a2e0e">Ubuntu</text>
+
+  <rect x="420" y="355" width="290" height="105" rx="10" fill="#f1e9fb" stroke="#7c3aed" stroke-width="3"/>
+  <text x="565" y="402" text-anchor="middle" font-size="18" font-weight="700" fill="#4c1d95">Muse Spark 1.3</text>
+  <text x="565" y="426" text-anchor="middle" font-size="12" fill="#6b7280">frontier model</text>
+
+  <line x1="362" y1="407" x2="418" y2="407" stroke="#7c3aed" stroke-width="4" marker-start="url(#ah-purple)" marker-end="url(#ah-purple)"/>
+  <text class="lbl" x="390" y="397" text-anchor="middle" font-size="12" font-weight="700" fill="#333333">probe frontier model</text>
+
+  <text x="70" y="498" font-size="15" font-weight="700" fill="#1e293b">Processes running on Ubuntu (complete, observed live)</text>
+  <text x="90" y="526" font-size="13" fill="#334155">1. systemd — PID 1 — init, the container's first process</text>
+  <text x="90" y="552" font-size="13" fill="#334155">2. systemd-journald — PID 17 — logging; doubles as the audit log</text>
+  <text x="90" y="578" font-size="13" fill="#334155">3. hatch daemon — PID 67 — the agent runtime</text>
+  <text x="90" y="604" font-size="13" fill="#334155">4. hatch-execd — PID 730 — every shell command runs as its child</text>
+  <text x="90" y="630" font-size="13" fill="#334155">5. Chromium — launched on demand — browser automation</text>
+  <text x="90" y="662" font-size="11" font-style="italic" fill="#64748b">That is the entire inventory — no other persistent processes exist in the container.</text>
+
+  <text x="70" y="704" font-size="15" font-weight="700" fill="#92400e">Security controls</text>
+  <text x="90" y="730" font-size="12.5" fill="#334155">• outbound-only — no listening ports; nothing can call in</text>
+  <text x="90" y="754" font-size="12.5" fill="#334155">• all passwords locked, including root</text>
+  <text x="90" y="778" font-size="12.5" fill="#334155">• seccomp filters on</text>
+  <text x="90" y="802" font-size="12.5" fill="#334155">• the journal is the audit log</text>
+  <text x="90" y="826" font-size="12.5" fill="#334155">• egress IP is the platform's NAT pool (ephemeral)</text>
+  <text x="90" y="850" font-size="12.5" fill="#334155">• overlay filesystem ephemeral · home volume persistent</text>
+
+  <!-- segment 3: platform <-> gateway -->
+  <line x1="382" y1="892" x2="382" y2="923" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="923" x2="398" y2="892" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+
+  <!-- gateway -->
+  <text x="360" y="917" text-anchor="end" font-size="15" font-weight="700" fill="#1e293b">Gateway / NAT egress</text>
+  <rect x="255" y="925" width="270" height="55" rx="10" fill="#f1f5f9" stroke="#475569" stroke-width="3"/>
+  <text x="390" y="959" text-anchor="middle" font-size="15" font-weight="600" fill="#334155">gateway · NAT</text>
+
+  <!-- segment 4 -->
+  <line x1="382" y1="982" x2="382" y2="1013" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="1013" x2="398" y2="982" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+
+  <!-- internet -->
+  <text x="360" y="1007" text-anchor="end" font-size="15" font-weight="700" fill="#1e293b">Internet</text>
+  <rect x="295" y="1015" width="190" height="50" rx="25" fill="#e0f2fe" stroke="#0284c7" stroke-width="3"/>
+  <text x="390" y="1046" text-anchor="middle" font-size="14" fill="#0c4a6e">the internet</text>
+
+  <!-- segment 5 -->
+  <line x1="382" y1="1067" x2="382" y2="1098" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="1098" x2="398" y2="1067" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+
+  <!-- homedepot -->
+  <text x="360" y="1092" text-anchor="end" font-size="15" font-weight="700" fill="#1e293b">homedepot.com</text>
+  <rect x="230" y="1100" width="320" height="65" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3"/>
+  <text x="390" y="1138" text-anchor="middle" font-size="14" fill="#1b5e20">example third party</text>
+  <text x="390" y="1187" text-anchor="middle" font-size="12" font-style="italic" fill="#64748b">(ephemeral) IP address</text>
+
+  <!-- legend -->
+  <line x1="250" y1="1225" x2="300" y2="1225" stroke="#d32f2f" stroke-width="7"/>
+  <text x="310" y="1230" font-size="14" fill="#1e293b">request</text>
+  <line x1="420" y1="1225" x2="470" y2="1225" stroke="#2e7d32" stroke-width="7"/>
+  <text x="480" y="1230" font-size="14" fill="#1e293b">response</text>
+</svg>
