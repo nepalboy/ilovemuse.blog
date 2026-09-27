@@ -1,17 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 1160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
   <defs>
-    <marker id="ah-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="ah-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#d32f2f"/>
     </marker>
-    <marker id="ah-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="ah-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/>
     </marker>
-    <marker id="ah-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="ah-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/>
     </marker>
-    <style>
-      .lbl { paint-order: stroke; stroke: #ffffff; stroke-width: 4px; }
-    </style>
   </defs>
 
   <rect x="0" y="0" width="780" height="1160" fill="#ffffff"/>
@@ -22,13 +19,16 @@
   <path d="M362 118 Q362 88 390 88 Q418 88 418 118 Z" fill="#334155"/>
 
   <!-- segment 1: human <-> app box -->
-  <line x1="382" y1="120" x2="382" y2="148" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
-  <line x1="398" y1="148" x2="398" y2="120" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
-  <text class="lbl" x="366" y="128" text-anchor="end" font-size="13" font-weight="700" fill="#d32f2f">request</text>
-  <text class="lbl" x="414" y="128" text-anchor="start" font-size="13" font-weight="700" fill="#2e7d32">response</text>
+  <line x1="382" y1="120" x2="382" y2="148" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="148" x2="398" y2="120" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah-green)"/>
+  <text x="366" y="128" text-anchor="end" font-size="13" font-weight="700" fill="none" stroke="#ffffff" stroke-width="7">request</text>
+  <text x="366" y="128" text-anchor="end" font-size="13" font-weight="700" fill="#d32f2f">request</text>
+  <text x="414" y="128" text-anchor="start" font-size="13" font-weight="700" fill="none" stroke="#ffffff" stroke-width="7">response</text>
+  <text x="414" y="128" text-anchor="start" font-size="13" font-weight="700" fill="#2e7d32">response</text>
 
   <!-- Muse App / Browser -->
-  <text class="lbl" x="390" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">Muse App / Browser</text>
+  <text x="390" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="none" stroke="#ffffff" stroke-width="7">Muse App / Browser</text>
+  <text x="390" y="142" text-anchor="middle" font-size="16" font-weight="700" fill="#1e293b">Muse App / Browser</text>
   <rect x="180" y="150" width="420" height="85" rx="10" fill="#e8f1fc" stroke="#1d4ed8" stroke-width="3"/>
   <rect x="215" y="162" width="100" height="56" rx="4" fill="#ffffff" stroke="#1d4ed8" stroke-width="2.5"/>
   <line x1="215" y1="176" x2="315" y2="176" stroke="#1d4ed8" stroke-width="2"/>
@@ -42,11 +42,12 @@
   <text x="445" y="231" text-anchor="middle" font-size="10" fill="#64748b">muse</text>
 
   <!-- segment 2: app box <-> platform -->
-  <line x1="382" y1="237" x2="382" y2="303" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
-  <line x1="398" y1="303" x2="398" y2="237" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+  <line x1="382" y1="237" x2="382" y2="303" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="303" x2="398" y2="237" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah-green)"/>
 
   <!-- Meta Muse Platform -->
-  <text class="lbl" x="390" y="294" text-anchor="middle" font-size="22" font-weight="700" fill="#111111">Meta Muse Platform</text>
+  <text x="390" y="294" text-anchor="middle" font-size="22" font-weight="700" fill="none" stroke="#ffffff" stroke-width="7">Meta Muse Platform</text>
+  <text x="390" y="294" text-anchor="middle" font-size="22" font-weight="700" fill="#111111">Meta Muse Platform</text>
   <rect x="40" y="305" width="700" height="495" rx="12" fill="#ffffff" stroke="#111111" stroke-width="5"/>
 
   <text x="215" y="342" text-anchor="middle" font-size="15" font-weight="700" fill="#1e293b">Ephemeral Muse Backend</text>
@@ -64,8 +65,9 @@
   <text x="565" y="402" text-anchor="middle" font-size="18" font-weight="700" fill="#4c1d95">Muse Spark 1.3</text>
   <text x="565" y="426" text-anchor="middle" font-size="12" fill="#6b7280">frontier model</text>
 
-  <line x1="362" y1="407" x2="418" y2="407" stroke="#7c3aed" stroke-width="4" marker-start="url(#ah-purple)" marker-end="url(#ah-purple)"/>
-  <text class="lbl" x="390" y="397" text-anchor="middle" font-size="12" font-weight="700" fill="#333333">probe frontier model</text>
+  <line x1="362" y1="407" x2="418" y2="407" stroke="#7c3aed" stroke-width="2.5" marker-start="url(#ah-purple)" marker-end="url(#ah-purple)"/>
+  <text x="390" y="397" text-anchor="middle" font-size="12" font-weight="700" fill="none" stroke="#ffffff" stroke-width="7">probe frontier model</text>
+  <text x="390" y="397" text-anchor="middle" font-size="12" font-weight="700" fill="#333333">probe frontier model</text>
 
   <text x="70" y="498" font-size="15" font-weight="700" fill="#1e293b">Processes running on Ubuntu (complete, observed live)</text>
   <text x="90" y="526" font-size="13" fill="#334155">1. systemd — PID 1 — init, the container's first process</text>
@@ -76,8 +78,8 @@
   <text x="90" y="662" font-size="11" font-style="italic" fill="#64748b">That is the entire inventory — no other persistent processes exist in the container.</text>
 
   <!-- segment 3: platform <-> gateway -->
-  <line x1="382" y1="802" x2="382" y2="833" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
-  <line x1="398" y1="833" x2="398" y2="802" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+  <line x1="382" y1="802" x2="382" y2="833" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="833" x2="398" y2="802" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah-green)"/>
 
   <!-- gateway -->
   <text x="360" y="827" text-anchor="end" font-size="15" font-weight="700" fill="#1e293b">Gateway / NAT egress</text>
@@ -85,8 +87,8 @@
   <text x="390" y="869" text-anchor="middle" font-size="15" font-weight="600" fill="#334155">gateway · NAT</text>
 
   <!-- segment 4 -->
-  <line x1="382" y1="892" x2="382" y2="923" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
-  <line x1="398" y1="923" x2="398" y2="892" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+  <line x1="382" y1="892" x2="382" y2="923" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="923" x2="398" y2="892" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah-green)"/>
 
   <!-- internet -->
   <text x="360" y="917" text-anchor="end" font-size="15" font-weight="700" fill="#1e293b">Internet</text>
@@ -94,8 +96,8 @@
   <text x="390" y="956" text-anchor="middle" font-size="14" fill="#0c4a6e">the internet</text>
 
   <!-- segment 5 -->
-  <line x1="382" y1="977" x2="382" y2="1008" stroke="#d32f2f" stroke-width="7" marker-end="url(#ah-red)"/>
-  <line x1="398" y1="1008" x2="398" y2="977" stroke="#2e7d32" stroke-width="7" marker-end="url(#ah-green)"/>
+  <line x1="382" y1="977" x2="382" y2="1008" stroke="#d32f2f" stroke-width="2.5" marker-end="url(#ah-red)"/>
+  <line x1="398" y1="1008" x2="398" y2="977" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#ah-green)"/>
 
   <!-- homedepot -->
   <text x="360" y="1002" text-anchor="end" font-size="15" font-weight="700" fill="#1e293b">homedepot.com</text>
@@ -104,8 +106,8 @@
   <text x="390" y="1097" text-anchor="middle" font-size="12" font-style="italic" fill="#64748b">(ephemeral) IP address</text>
 
   <!-- legend -->
-  <line x1="250" y1="1130" x2="300" y2="1130" stroke="#d32f2f" stroke-width="7"/>
+  <line x1="250" y1="1130" x2="300" y2="1130" stroke="#d32f2f" stroke-width="2.5"/>
   <text x="310" y="1135" font-size="14" fill="#1e293b">request</text>
-  <line x1="420" y1="1130" x2="470" y2="1130" stroke="#2e7d32" stroke-width="7"/>
+  <line x1="420" y1="1130" x2="470" y2="1130" stroke="#2e7d32" stroke-width="2.5"/>
   <text x="480" y="1135" font-size="14" fill="#1e293b">response</text>
 </svg>
