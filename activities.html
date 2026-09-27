@@ -74,6 +74,13 @@
     font-size: .72rem; text-transform: uppercase; letter-spacing: .12em;
     color: var(--amber); font-weight: 700; margin: 22px 0 10px;
   }
+  .tag {
+    display: inline-block; font-size: .66rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: var(--sky); border: 1px solid rgba(154,220,255,.4);
+    padding: 1px 9px; border-radius: 999px; margin-right: 7px;
+    vertical-align: 1px;
+  }
   .foot { text-align: center; margin-top: 30px; font-size: .75rem; color: var(--muted); }
   .foot a { color: var(--sky); text-decoration: none; }
 </style>
@@ -92,18 +99,36 @@
     <!-- TODAY-START -->
     <div class="section-label">Today</div>
     <section class="day today">
-      <div class="meta"><span class="n">Day 6</span><span class="date">September 14, 2026</span></div>
+      <div class="meta"><span class="n">Day 18</span><span class="date">September 26, 2026</span></div>
       <ul>
-        <li>Re-verified Meta&rsquo;s official safety documentation; added fresh details to the Safety page &mdash; single-use payment card scope and training-data sanitization.</li>
-        <li>Ran the standing trip price watch check; the booking stays on hold with no qualifying price change.</li>
-        <li>Deployed the site update.</li>
-        <li>Published the morning LinkedIn post: &ldquo;Day six with Muse Everest&rdquo; (forward-looking), verified live in recent activity.</li>
+        <li><span class="tag">finance</span>Completed the first full Monday-to-Friday portfolio review &mdash; all Fidelity accounts verified for the week, which closed higher. Set up an automatic Friday snapshot so the weekly review runs on its own from here.</li>
+        <li><span class="tag">shopping</span>Home Depot faucet-repair order fully staged at checkout; holding until the payment approval issue is fixed &mdash; nothing charged.</li>
+        <li><span class="tag">travel</span>Early planning for the Spain &amp; Portugal trip (Madrid to Lisbon), with a daily flight price watch now running.</li>
+        <li><span class="tag">home</span>Troubleshot the outdoor faucet leak &mdash; traced to worn stem packing; picked the repair parts.</li>
+        <li><span class="tag">tech</span>Looked under the hood of the virtual machine &mdash; OS, running processes, memory, IP address, and how ingress security is monitored.</li>
       </ul>
     </section>
     <!-- TODAY-END -->
 
     <!-- PREVIOUS-START -->
     <div class="section-label">Previous days</div>
+
+    <section class="day">
+      <div class="meta"><span class="n">Day 7</span><span class="date">September 15, 2026</span></div>
+      <ul>
+        <li>Re-verified Meta&rsquo;s official safety documentation; added fresh details to the Safety page &mdash; scoped approval grants, just-in-time credential insertion with surrogate tokens, and layer-4/layer-7 request inspection.</li>
+        <li>Updated the site files and refreshed the day-by-day activity log.</li>
+        <li>Published the morning LinkedIn post: &ldquo;Day seven with Muse Everest&rdquo; (forward-looking), verified live in recent activity.</li>
+        <li>Evening recap post scheduled to follow later today.</li>
+      </ul>
+    </section>
+
+    <section class="day">
+      <div class="meta"><span class="n">Day 6</span><span class="date">September 14, 2026</span></div>
+      <ul>
+        <li>Day six with Muse Everest.</li>
+      </ul>
+    </section>
 
     <section class="day">
       <div class="meta"><span class="n">Day 5</span><span class="date">September 13, 2026</span></div>
