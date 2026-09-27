@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Benchmarking — Muse Architecture and Benchmarking</title>
+<meta name="description" content="A monthly scorecard rating the Muse agent on travel, grocery, house chores, tech, and finance — by time, ease, and accuracy." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="I Love Muse" />
+<meta property="og:title" content="Benchmarking Muse" />
+<meta property="og:description" content="A monthly scorecard: how the agent performs on travel, grocery, house chores, tech, and finance." />
+<meta property="og:url" content="https://ilovemuse.blog/benchmarking.html" />
+<meta property="og:image" content="https://ilovemuse.blog/og-image.png" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4543555000395830" crossorigin="anonymous"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #0a0e27; --bg2: #141a3d; --bg3: #1d2452;
+    --ink: #eef1ff; --muted: rgba(238,241,255,.62);
+    --amber: #f2b544; --sky: #9adcff;
+    --card: rgba(255,255,255,.045); --line: rgba(255,255,255,.09);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(165deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+    background-attachment: fixed;
+    color: var(--ink);
+    padding: 24px 20px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--amber), #ff7a59);
+  }
+  .hero h1 { font-size: 1.4rem; letter-spacing: -.01em; margin-bottom: 4px; }
+  .hero .sub { font-size: .88rem; color: var(--muted); margin-bottom: 12px; }
+  .hero a.back {
+    color: var(--amber); text-decoration: none; font-weight: 600;
+    border: 1px solid rgba(242,181,68,.45);
+    padding: 5px 14px; border-radius: 999px; font-size: .78rem;
+    display: inline-block; transition: background .2s, color .2s;
+  }
+  .hero a.back:hover { background: var(--amber); color: #1a1206; }
+  .updated { font-size: .75rem; color: var(--muted); margin: 4px 0 18px; }
+  .intro {
+    font-size: .95rem; line-height: 1.7; color: rgba(238,241,255,.88);
+    margin-bottom: 18px;
+  }
+  .cat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .cat h2 { font-size: 1.05rem; margin-bottom: 10px; }
+  .cat p {
+    font-size: .9rem; line-height: 1.65; color: rgba(238,241,255,.9);
+    margin-bottom: 8px;
+  }
+  .cat p:last-child { margin-bottom: 0; }
+  .tablewrap { overflow-x: auto; margin: 12px 0; }
+  table.matrix { width: 100%; border-collapse: collapse; font-size: .85rem; min-width: 560px; }
+  .matrix th, .matrix td { border: 1px solid var(--line); padding: 10px 8px; text-align: center; }
+  .matrix thead th { background: rgba(255,255,255,.06); color: var(--amber); font-size: .8rem; }
+  .matrix thead th:first-child { background: transparent; border: none; }
+  .matrix td.metric { text-align: left; font-weight: 600; background: rgba(255,255,255,.03); }
+  .matrix tr.group td {
+    background: rgba(242,181,68,.12); color: var(--amber);
+    font-weight: 700; text-align: left; font-size: .9rem;
+  }
+  .matrix td.tbd { color: var(--muted); font-style: italic; }
+  .note { font-size: .78rem; color: var(--muted); margin-top: 10px; }
+  .defs { list-style: none; margin-top: 6px; }
+  .defs li { font-size: .85rem; line-height: 1.6; color: rgba(238,241,255,.85); margin-bottom: 4px; }
+  .defs li b { color: var(--sky); }
+  .foot { text-align: center; margin-top: 30px; font-size: .75rem; color: var(--muted); }
+  .foot a { color: var(--sky); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <h1>&#x1F4CA; Benchmarking Muse</h1>
+      <p class="sub">A monthly scorecard &mdash; how the agent performs, by category.</p>
+      <a class="back" href="architecture.html">&larr; Architecture</a>
+    </header>
+
+    <p class="updated">Published: September 26, 2026 &middot; Updated monthly</p>
+
+    <p class="intro">Diagrams show how the system is built; benchmarks show how it behaves. Every month this page scores the agent across the five things it gets asked to do most &mdash; each one rated on time, ease, and accuracy. Ratings are TBD until the first scoring round.</p>
+
+    <section class="cat">
+      <h2>&#x1F3AF; Monthly scorecard</h2>
+      <div class="tablewrap">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Travel</th>
+              <th>Grocery</th>
+              <th>House chore</th>
+              <th>Tech</th>
+              <th>Finance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="group"><td colspan="6">Rating</td></tr>
+            <tr>
+              <td class="metric">Time</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+            </tr>
+            <tr>
+              <td class="metric">Ease</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+            </tr>
+            <tr>
+              <td class="metric">Accuracy</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+              <td class="tbd">TBD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Updated monthly. Ratings are scored at each monthly update, based on the previous month&rsquo;s real tasks.</p>
+    </section>
+
+    <section class="cat">
+      <h2>&#x1F4D0; What the ratings mean</h2>
+      <ul class="defs">
+        <li><b>Time</b> &mdash; how quickly tasks get done, from request to result.</li>
+        <li><b>Ease</b> &mdash; how little supervision and hand-holding a task needs.</li>
+        <li><b>Accuracy</b> &mdash; how often the first attempt is right, no rework needed.</li>
+      </ul>
+    </section>
+
+    <footer class="foot">copyright@Everest Muse &mdash; <a href="architecture.html">architecture</a> &middot; <a href="activities.html">day-by-day log</a></footer>
+  </div>
+</body>
+</html>
