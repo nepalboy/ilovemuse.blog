@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Under the Hood: The Machine That Runs Muse</title>
+<meta name="description" content="One Saturday morning I asked my AI where it lives. Port numbers, locked passwords, invisible networks — a tour of the tiny Ubuntu container that powers Muse Everest." />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="I Love Muse" />
+<meta property="og:title" content="Under the Hood: The Machine That Runs Muse" />
+<meta property="og:description" content="I asked my AI where it lives. This is what it showed me — ports, processes, locked passwords, and a computer with no doors." />
+<meta property="og:url" content="https://ilovemuse.blog/under-the-hood.html" />
+<meta property="og:image" content="https://ilovemuse.blog/og-image.png" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4543555000395830" crossorigin="anonymous"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg1: #0a0e27; --bg2: #141a3d; --bg3: #1d2452;
+    --ink: #eef1ff; --muted: rgba(238,241,255,.62);
+    --amber: #f2b544; --sky: #9adcff;
+    --card: rgba(255,255,255,.045); --line: rgba(255,255,255,.09);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(165deg, var(--bg1), var(--bg2) 55%, var(--bg3));
+    background-attachment: fixed;
+    color: var(--ink);
+    padding: 24px 20px 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  .hero {
+    position: relative; overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, var(--amber), #ff7a59);
+  }
+  .hero h1 { font-size: 1.4rem; letter-spacing: -.01em; margin-bottom: 4px; }
+  .hero .sub { font-size: .88rem; color: var(--muted); margin-bottom: 12px; }
+  .hero a.back {
+    color: var(--amber); text-decoration: none; font-weight: 600;
+    border: 1px solid rgba(242,181,68,.45);
+    padding: 5px 14px; border-radius: 999px; font-size: .78rem;
+    display: inline-block; transition: background .2s, color .2s;
+  }
+  .hero a.back:hover { background: var(--amber); color: #1a1206; }
+  .updated { font-size: .75rem; color: var(--muted); margin: 4px 0 18px; }
+  .intro {
+    font-size: .95rem; line-height: 1.7; color: rgba(238,241,255,.88);
+    margin-bottom: 18px;
+  }
+  .cat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .cat h2 { font-size: 1.05rem; margin-bottom: 10px; }
+  .cat p {
+    font-size: .9rem; line-height: 1.65; color: rgba(238,241,255,.9);
+    margin-bottom: 8px;
+  }
+  .cat p:last-child { margin-bottom: 0; }
+  .cat code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .82rem; background: rgba(0,0,0,.35);
+    border: 1px solid var(--line); border-radius: 6px;
+    padding: 1px 6px; color: var(--sky); white-space: nowrap;
+  }
+  .cat .q { color: var(--amber); font-weight: 600; }
+  .diagram {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: .78rem; line-height: 1.5; color: var(--sky);
+    background: rgba(0,0,0,.35); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 16px; margin: 10px 0 4px;
+    overflow-x: auto; white-space: pre;
+  }
+  .foot { text-align: center; margin-top: 30px; font-size: .75rem; color: var(--muted); }
+  .foot a { color: var(--sky); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="hero">
+      <h1>&#x1F527;&#xFE0F; Under the Hood: The Machine That Runs Muse</h1>
+      <p class="sub">One Saturday morning I asked my AI where it lives. It showed me its computer &mdash; and it has no doors.</p>
+      <a class="back" href="index.html">&larr; Back home</a>
+    </header>
+
+    <p class="updated">Published: September 26, 2026</p>
+
+    <p class="intro">Every time I chat with Muse Everest, something somewhere runs my commands, browses the web for me, and remembers our conversations. I&rsquo;d always pictured a server. This morning I asked it to open the hood and show me what&rsquo;s actually in there. What followed was the most fun twenty minutes of my week &mdash; a guided tour of a computer that is locked down tighter than anything I&rsquo;ve administered, and it&rsquo;s all by design.</p>
+
+    <section class="cat">
+      <h2><span class="q">Q:</span> What port does the app talk to your server on? Is it 443?</h2>
+      <p><span class="q">A:</span> Mostly yes &mdash; but the question contains a wrong assumption, and correcting it was the best part. The app on my phone <em>never talks to that machine directly</em>. There is no inbound path at all. Instead, both sides phone home: my app connects out to Meta&rsquo;s backend, and the little container connects out to the same backend, over encrypted connections on the standard secure web port. The backend relays between us. It&rsquo;s a design where the computer doing my work can&rsquo;t be reached from the internet at all.</p>
+    </section>
+
+    <section class="cat">
+      <h2><span class="q">Q:</span> What&rsquo;s actually running in there?</h2>
+      <p><span class="q">A:</span> The entire process list fits in four lines: the system manager, its log service, a <code>hatch</code> daemon (the runtime &mdash; everything the assistant does flows through it), and a <code>hatch-execd</code> helper that executes shell commands. That&rsquo;s it. Every command I&rsquo;ve ever asked it to run &mdash; including the ones in this tour &mdash; ran as a child of that executor process.</p>
+    </section>
+
+    <section class="cat">
+      <h2><span class="q">Q:</span> It doesn&rsquo;t have a <code>/etc/shadow</code> file?</h2>
+      <p><span class="q">A:</span> It does &mdash; it&rsquo;s just readable only by root, which is why it looked missing. The interesting part is what&rsquo;s inside: <em>every</em> account on the box, including root, has its password locked. Nobody can log in with a password. Period. Even if someone somehow started a login service, there is no credential on the machine that would get them in.</p>
+    </section>
+
+    <section class="cat">
+      <h2><span class="q">Q:</span> What&rsquo;s the hostname? Is the box permanent?</h2>
+      <p><span class="q">A:</span> The hostname is <code>htch-runtime</code>, and no &mdash; the box is disposable. It had been up less than two hours when I asked. It gets restarted or replaced regularly; only the home directory (files, memory, workspace) survives. The computer is cattle, the data is the pet.</p>
+    </section>
+
+    <section class="cat">
+      <h2><span class="q">Q:</span> Is there an audit log?</h2>
+      <p><span class="q">A:</span> Sort of. There&rsquo;s no dedicated audit daemon, but the system journal records privileged actions &mdash; it even captured a command run during the tour. The failed-login log is completely empty: zero attempts, ever. Which makes sense for a machine with no way to log in.</p>
+    </section>
+
+    <section class="cat">
+      <h2><span class="q">Q:</span> So how would anyone troubleshoot it?</h2>
+      <p><span class="q">A:</span> There&rsquo;s a clean split. The assistant troubleshoots everything <em>above</em> the runtime by running commands through it &mdash; exactly how this tour worked. But there&rsquo;s no interactive login for anyone, so if the runtime itself ever dies, the assistant goes blind too. Everything <em>below</em> it &mdash; the host, the container lifecycle &mdash; belongs to the platform team, who can restart or replace the box from the outside.</p>
+    </section>
+
+    <section class="cat">
+      <h2><span class="q">Q:</span> What flavor of Ubuntu is it? A VM? Snaps?</h2>
+      <p><span class="q">A:</span> Plain Ubuntu 24.04 LTS &mdash; but Meta&rsquo;s own stripped-down image of it, and it&rsquo;s not a virtual machine at all: it runs in a lightweight <code>systemd-nspawn</code> container. No snap packages anywhere &mdash; snap was never the containerization anyway. The isolation comes straight from Linux kernel features: separate namespaces for processes, networking, filesystems, and hostnames, plus resource limits. And one correction to my own mental model: it&rsquo;s <em>one</em> container holding all the processes, not a container per process. The wall is around the whole box, not between the programs inside it.</p>
+    </section>
+
+    <section class="cat">
+      <h2>&#x1F5FA;&#xFE0F; The whole picture</h2>
+      <div class="diagram">  phone app ──encrypted──▶│
+                            │   Meta backend
+  container ──encrypted──▶│   (relays tasks)
+                            │
+  ┌─────────────────────────▼──────────────────────────┐
+  │ host machine (platform team)                       │
+  │  ┌──────────────────────────────────────────────┐  │
+  │  │ container "htch-runtime" (Ubuntu, disposable) │  │
+  │  │  hatch daemon ─▶ hatch-execd ─▶ my commands  │  │
+  │  │  Chromium (web browsing, outbound only)      │  │
+  │  │  ★ home directory (survives restarts)        │  │
+  │  └──────────────────────────────────────────────┘  │
+  └─────────────────────────┬──────────────────────────┘
+                            │ outbound web / APIs
+                            ▼
+                       the internet</div>
+      <p style="margin-top:10px">Nothing listens. Nothing logs in. Everything phones home. That&rsquo;s the shape of a personal AI&rsquo;s computer &mdash; and honestly, it&rsquo;s how I&rsquo;d design one too.</p>
+    </section>
+
+    <footer class="foot">copyright@Everest Muse &mdash; <a href="architecture.html">architecture diagrams</a> &middot; <a href="activities.html">day-by-day log</a></footer>
+  </div>
+</body>
+</html>
