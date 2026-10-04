@@ -65,6 +65,8 @@
   .updated { font-size: .75rem; color: var(--muted); margin: 4px 0 18px; }
   .foot { text-align: center; margin-top: 30px; font-size: .75rem; color: var(--muted); }
   .foot a { color: var(--sky); text-decoration: none; }
+  .views { text-align: center; font-size: .8rem; color: var(--muted); margin: 20px 0 4px; }
+  .views span { color: var(--amber); font-weight: 700; }
 </style>
 </head>
 <body>
@@ -78,9 +80,45 @@
       <a class="back" href="index.html">&larr; Back home</a>
     </header>
 
-    <p class="updated">Last updated: September 13, 2026</p>
+    <p class="updated">Last updated: October 4, 2026</p>
 
     <!-- NEWS-START -->
+    <article class="story">
+      <span class="date">Oct 3, 2026</span>
+      <h2><a href="https://thejoai.com/ai-news/meta-opens-muse-ai-to-hardware-makers-ships-muse-home-link/">Meta opens Muse AI to hardware makers, ships Muse Home Link</a></h2>
+      <p>Meta open-sourced Muse Gadgets &mdash; ESP32 firmware, a Linux SDK, and docs under Apache 2.0 &mdash; so developers can build custom peripherals (screens, buttons, sensors) on off-the-shelf boards. Its own Muse Home Link, a USB-C gadget that lets Muse control smart TVs and speakers, is going free to 5,000 active US subscribers. <span class="src">&mdash; TheJOAI</span></p>
+    </article>
+
+    <article class="story">
+      <span class="date">Oct 3, 2026</span>
+      <h2><a href="https://completeaitraining.com/news/meta-launches-muse-shopping-agent-that-checks-out-on/">Meta launches Muse shopping agent that checks out on partner sites for a fee</a></h2>
+      <p>Muse can now browse and complete checkouts across partner retailers &mdash; Walmart, Gap, Sephora &mdash; with Meta taking a small fee per transaction and an approval card before every charge. Amazon has blocked Muse from buying on its site, citing credential-storage and scraping concerns. <span class="src">&mdash; Complete AI Training</span></p>
+    </article>
+
+    <article class="story">
+      <span class="date">Oct 3, 2026</span>
+      <h2><a href="https://www.youtube.com/watch?v=9VTuKGI54vQ">BBC&rsquo;s AI Decoded asks: Meta&rsquo;s Muse &mdash; cute AI agent or &ldquo;AI Trojan horse&rdquo;?</a></h2>
+      <p>Christian Fraser hosts Ed Zitron and Ben Hatton debating whether Muse is a helpful personal agent or a data-hungry trojan horse &mdash; with the panel split on whether the critics have actually used the product. <span class="src">&mdash; BBC News / YouTube</span></p>
+    </article>
+
+    <article class="story">
+      <span class="date">Oct 1, 2026</span>
+      <h2><a href="https://www.ai-market-watch.com/news/meta-plans-to-bring-its-muse-ai-agent-to-ai-glasses-within-months-hr1xok">Meta plans AI glasses integration and expands its consumer agent</a></h2>
+      <p>Announced at Connect: Muse comes to AI glasses within months &mdash; activate by name, act on what you see &mdash; plus improved voice, more service connections (Instacart, Notion, GitHub, Box), a dedicated email address, and Muse Charm, a pocket-sized device. <span class="src">&mdash; AI Market Watch</span></p>
+    </article>
+
+    <article class="story">
+      <span class="date">Sep 29, 2026</span>
+      <h2><a href="https://openaimaster.com/muse-ai-meta-guide/">OpenAI answers with Dots AI, aimed at Pro and business users</a></h2>
+      <p>OpenAI announced Dots AI, its rival personal agent, targeting Pro and business users &mdash; while Sensor Tower estimates put Muse at ~5M downloads in the US and Canada within 22 days of launch, faster than ChatGPT&rsquo;s early climb. <span class="src">&mdash; OpenAIMaster</span></p>
+    </article>
+
+    <article class="story">
+      <span class="date">Sep 21, 2026</span>
+      <h2><a href="https://deafnews.it/en/news/vulnerabilities/meta-muse-zero-day-turns-ai-assistant-into-backdoor-attack-explained">Researcher finds macOS zero-day in Muse; Meta hotfixes in ~12 hours</a></h2>
+      <p>Patrick Wardle (Objective-See) disclosed an undocumented macOS dictation setting that let any local process redirect Muse&rsquo;s dictation traffic and steal account tokens &mdash; no remote exploit needed. Meta removed the setting from production builds about 12 hours after publication. <span class="src">&mdash; DeafNews / Ars Technica</span></p>
+    </article>
+
     <article class="story">
       <span class="date">Sep 9, 2026</span>
       <h2><a href="https://www.neowin.net/news/metas-new-muse-ai-agent-can-shop-send-emails-and-negotiate-on-your-behalf/">Meta&rsquo;s new Muse AI agent can shop, send emails, and negotiate on your behalf</a></h2>
@@ -118,6 +156,19 @@
     </article>
     <!-- NEWS-END -->
 
+    <p class="views">&#x1F441;&#xFE0F; <span id="viewcount">100</span> views</p>
+    <script>
+    (function(){
+      try {
+        var key = 'ilovemuse_views_' + location.pathname;
+        var n = parseInt(localStorage.getItem(key) || '100', 10);
+        if (isNaN(n) || n < 100) n = 100;
+        n += 1;
+        localStorage.setItem(key, String(n));
+        document.getElementById('viewcount').textContent = n.toLocaleString();
+      } catch(e) {}
+    })();
+    </script>
     <footer class="foot">copyright@Everest Muse &mdash; <a href="index.html">ilovemuse.blog</a></footer>
   </div>
 </body>
