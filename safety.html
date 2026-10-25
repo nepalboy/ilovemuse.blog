@@ -94,7 +94,7 @@
       <a class="back" href="index.html">&larr; Back home</a>
     </header>
 
-    <p class="updated">Last updated: September 14, 2026</p>
+    <p class="updated">Last updated: September 15, 2026</p>
 
     <!-- BUCKET:ACCESS-START -->
     <section class="bucket">
@@ -106,6 +106,7 @@
         <li><strong>You can make it forget.</strong> Tell Muse to forget specific things it has learned about you.</li>
         <li><strong>It asks before the big stuff.</strong> Sending an email or making a purchase needs your approval first.</li>
         <li><strong>Email is extra guarded.</strong> One-time passcodes, password-reset links, and magic login links are filtered out of what Muse sees in your inbox, so it can&rsquo;t be tricked into using them on other sites.</li>
+        <li><strong>Approvals are precise.</strong> Muse can grant one-time, session, task, time-bound, or perpetual permission &mdash; and each later use is checked against the exact scope granted.</li>
       </ul>
     </section>
     <!-- BUCKET:ACCESS-END -->
@@ -120,6 +121,7 @@
         <li><strong>Built for attacks.</strong> The model is trained to spot prompt injection &mdash; malicious instructions hidden in the data it reads &mdash; and the system assumes it may be under attack, limiting what damage a mistake can do.</li>
         <li><strong>Coming soon: Confidential VM.</strong> The whole virtual machine encrypted with a key only you hold &mdash; not even Meta could look inside.</li>
         <li><strong>The browser is locked down too.</strong> Muse drives an up-to-date Chromium that can&rsquo;t read your passwords or payment details as you type them, and it steers clear of known malicious sites.</li>
+        <li><strong>Every network request is inspected.</strong> Sentinel checks each outbound request in detail &mdash; hostname, destination IP, port, method, path, and the decoded request itself &mdash; before letting traffic out.</li>
       </ul>
     </section>
     <!-- BUCKET:ARCHITECTURE-END -->
@@ -132,6 +134,8 @@
         <li><strong>Payments are shielded.</strong> Purchases go through Link by Stripe, which creates a one-time-use card so your real card details never reach the website. Each card is tied to one merchant, one amount, and a short time window, so it wouldn&rsquo;t be much use if stolen.</li>
         <li><strong>Full audit trail.</strong> You can see everything Muse has done and everything it plans to do.</li>
         <li><strong>Tested like a target.</strong> Meta hardened Muse with internal dogfooding, agentic red-teaming, and a private bug bounty &mdash; now public, paying up to $300,000 for valid reports, including up to $130,000 for a successful prompt-injection attempt that affects one user.</li>
+        <li><strong>Secrets are swapped just in time.</strong> For requests that need a credential, Muse only ever sees a surrogate token; Sentinel replaces it with the real credential at the network boundary &mdash; so coaxing the real secret out of the agent can&rsquo;t work.</li>
+        <li><strong>More payment options coming.</strong> Shop Pay is on the way, plus 1Password support so Muse can use logins a person already has.</li>
       </ul>
     </section>
     <!-- BUCKET:SECURITY-END -->
